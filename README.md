@@ -1,3 +1,11 @@
+**DEMO LINK:**  (https://ym-pizza-order-bot.netlify.app/chatbot.html)
+
+**Orders Link:**  (https://ym-pizza-order-bot.netlify.app/orders.html)
+
+
+
+
+
 ###                    Instructions to use the Pizza Ordering chatbot 
 1.	You can start conversation with greetings like hi, hello or else you can directly start with order pizza, I want to order etc.
 2.	It will show the response as you have to select veg or non veg type.
@@ -26,3 +34,6 @@
 
 
 ![](flowchart.png)
+
+
+
