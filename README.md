@@ -12,4 +12,7 @@
 11.	After that it will asks you to enter your orderID. If that OrderId is available in the database it will show your order status else it will show you as the data not available.
 12.	After completing all these if you want to order again then again you can enter order Pizza.
   
-NOTE: While entering your name please enter “My name is <name>“ in this format.
+###NOTE: While entering your name please enter “My name is <name>“ in this format.
+  
+###Architecture for Pizza Ordering chatbot
+![](architecture.png)
