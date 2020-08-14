@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="buttons-order">
+      <a href="index.html" class="btn btn-info" role="button">Home</a>
+      <a href="chatbot.html" class="btn btn-info" role="button">Order Pizza or check status</a>
+    </div>
+
+    <div id="loading" class="text-center" style="font-size: 20px;">
+      Loading table...
+    </div>
+
+    <table class="table table-bordered">
+      
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Name</th>
+          <th>Pizza-type</th>
+          <th>Pizza-name</th>
+          <th>Pizza-size</th>
+          <th>Quantity</th>
+          <th>Phone no</th>
+          <th>Address</th>
+          <th>Status</th>
+        </tr>
+
+      </thead>
+      <tbody id="orders-table">
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-analytics.js"></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>
+  
+  <script>
+
+
+    // Your web app's Firebase configuration
+    let firebaseConfig = {
+      apiKey: "AIzaSyBmXDAAg9lcM7IvYKQrIkhjdN6RoW2rIDY",
+      authDomain: "pizza-order-gnof.firebaseapp.com",
+      databaseURL: "https://pizza-order-gnof.firebaseio.com",
+      projectId: "pizza-order-gnof",
+      storageBucket: "pizza-order-gnof.appspot.com",
+      messagingSenderId: "803039281758",
+      appId: "1:803039281758:web:ae67eefa589f2c1ffbeacf",
+      measurementId: "G-5QDRWXR71B"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+
+    
+
+    firebase.database().ref('orders').once('value', function (orders) {
+      orders.forEach((order) => {
+        let orderId = order.key;
+        let orderData = order.val();
+
+        let name = orderData.name;
+        let mobile = orderData.mobile;
+        let address = orderData.address;
+        let type = orderData.type;
+        let item = orderData.item;
+        let size = orderData.size;
+        let quantity = orderData.quantity;
+        let status = orderData.status;
+
+
+        let html = `
+        <tr>
+            <td>${orderId}</td>
+            <td>${name}</td>
+            <td>${type}</td>
+            <td>${item}</td>
+            <td>${size}</td>
+            <td>${quantity}</td>
+            <td>${mobile}</td>
+            <td>${address}</td>
+            <td>${status}</td>
+        </tr>`;
+
+        $('#orders-table').append(html);
+
+      });
+      $('#loading').hide();
+    });
+    
+  </script>
+
+</body>
+
+</html>
